@@ -1,0 +1,39 @@
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+
+# Rider files
+.idea/
+
+# User-specific files
+*.sln.DotSettings.user
+
+# Database files
+*.mdf
+*.ldf
+*.sqlite
+identifier.sqlite
+
+# Logs
+Logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Visual Studio Code files
+.vscode/
+
+# NuGet Packages
+*.nupkg
+**/packages/*
