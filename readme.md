@@ -47,7 +47,9 @@ The Haftcin Challenge API provides several endpoints for user authentication and
   - **Description**: Log in an existing user.
 
 - **POST** `/api/auth/{id}/verify-otp`
+
   - **Description**: Verify the OTP for a user.
+
   - **Path Parameter**: `id` (UUID of the user)
 
 ### User Management Routes
@@ -66,11 +68,15 @@ The Haftcin Challenge API provides several endpoints for user authentication and
 
 ## 📅 Todo
 
-- **📈 Performance Observation and Measurement**: Implement tools to monitor and measure application performance.
-- **🧪 More Tests**: Expand the testing suite to cover additional scenarios and edge cases.
-- **✅ More Validation**: Enhance request validation to cover more business rules and scenarios.
-- **🔄 Caching**: Introduce caching mechanisms to improve response times and reduce load on the database.
-- **🐳 Docker**: Ensure the application is fully containerized and optimized for deployment using Docker.
+1. 📈 Implement performance monitoring tools to identify bottlenecks and optimize application efficiency.
+
+2. 🧪 Expand the test suite to cover more scenarios, improving overall code reliability and catching edge cases.
+
+3. ✅ Enhance request validation to enforce stricter business rules and prevent processing of invalid data.
+
+4. 🔄 Introduce caching mechanisms to reduce database load and improve response times for frequently accessed data.
+
+5. 🐳 Refine Docker implementation to ensure optimal containerization and efficient deployment across environments.
 
 ---
 
@@ -109,6 +115,7 @@ Open the `appsettings.json` file located in the `src/HaftcinChallenge.Api` direc
 ```
 
 Replace:
+
 - `your_server` with the name or IP address of your SQL Server instance.
 - `your_database` with the name of the database you want to use.
 - `your_user` with your SQL Server username.
@@ -159,7 +166,9 @@ dotnet run --project src/HaftcinChallenge.Api/HaftcinChallenge.Api.csproj
 Once the application is running, you can access the API at `http://localhost:5015/swagger/index.html`.
 
 ### 8. Run Unit Tests
+
 To run unit tests, specifying the tests/HaftcinChallenge.Domain.Tests directory and execute the following command:
+
 ```bash
  dotnet test tests/HaftcinChallenge.Domain.Tests/HaftcinChallenge.Domain.Tests.csproj
 ```
