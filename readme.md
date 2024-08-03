@@ -123,13 +123,11 @@ Replace:
 
 ### 4. Build the Project
 
-To build the project, navigate to the `src` directory and run the following command:
+To build the project, run the following command:
 
 ```bash
  dotnet build src/HaftcinChallenge.Api/HaftcinChallenge.Api.csproj
 ```
-
-Certainly! I'll add a note about updating the global EF tool before running migrations. Here's the updated section:
 
 ### 5. Run Migrations
 
@@ -155,11 +153,14 @@ This command will apply all pending migrations to your database, creating or upd
 
 ### 6. Start the Application
 
-You can now start the application by specifying the startup project `src/HaftcinChallenge.Api` directory and running:
+You can now start the application by running the following command:
 
 ```bash
 dotnet run --project src/HaftcinChallenge.Api/HaftcinChallenge.Api.csproj
 ```
+
+### Important Note:
+    You can navigate directly to the Swagger UI even if the build process appears to be stuck and displays a message. The Swagger UI will be running and accessible during this time.
 
 ### 7. Access the API
 
@@ -167,7 +168,7 @@ Once the application is running, you can access the API at `http://localhost:501
 
 ### 8. Run Unit Tests
 
-To run unit tests, specifying the tests/HaftcinChallenge.Domain.Tests directory and execute the following command:
+To run unit tests, execute the following command:
 
 ```bash
  dotnet test tests/HaftcinChallenge.Domain.Tests/HaftcinChallenge.Domain.Tests.csproj
@@ -175,7 +176,7 @@ To run unit tests, specifying the tests/HaftcinChallenge.Domain.Tests directory 
 
 ### 9. Run Integration Tests
 
-To run integration tests, specifying the `tests/HaftcinChallenge.IntegrationTests` directory and execute the following command:
+To run integration tests, execute the following command:
 
 ```bash
 dotnet test tests/HaftcinChallenge.IntegrationTests/HaftcinChallenge.IntegrationTests.csproj
