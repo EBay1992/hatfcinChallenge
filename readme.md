@@ -119,8 +119,7 @@ Replace:
 To build the project, navigate to the `src` directory and run the following command:
 
 ```bash
-cd src
-dotnet build
+dotnet build --project src/HaftcinChallenge.Api
 ```
 
 ### 5. Run Migrations
@@ -128,7 +127,7 @@ dotnet build
 Before running the application, you may need to apply any pending migrations to set up the database schema. Run the following command:
 
 ```bash
-dotnet ef database update --project HaftcinChallenge.Infrastructure/HaftcinChallenge.Infrastructure.csproj
+dotnet ef database update -p src/HaftcinChallenge.Infrastructure/HaftcinChallenge.Infrastructure.csproj -s src/HaftcinChallenge.Api/HaftcinChallenge.Api.csproj
 ```
 
 ### 6. Start the Application
