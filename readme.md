@@ -180,13 +180,3 @@ To run integration tests, specifying the `tests/HaftcinChallenge.IntegrationTest
 ```bash
 dotnet test tests/HaftcinChallenge.IntegrationTests/HaftcinChallenge.IntegrationTests.csproj
 ```
-
-**Important Note:**
-The current integration tests have some inherent brittleness and may not run successfully 100% of the time. This is a known issue that should be addressed in future improvements. Some potential reasons for this instability could include:
-
-1. Timing issues with asynchronous operations
-2. Potential race conditions in test setup or teardown
-3. Dependency on external services or databases that may have occasional hiccups
-4. Insufficient isolation between test cases
-
-When running these tests, you may occasionally encounter failures that are not indicative of actual problems in the code, but rather issues with the test environment or setup. If you encounter consistent failures, it's worth investigating further, but occasional failures may be due to the current brittleness of the test suite.

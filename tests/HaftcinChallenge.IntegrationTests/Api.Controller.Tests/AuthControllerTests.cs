@@ -12,10 +12,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace HaftcinChallenge.IntegrationTests.Api.Controller.Tests;
 
-public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>, IDisposable
+public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>, IDisposable, IAsyncDisposable
 {
     private readonly WebApplicationFactory<Program> _factory;
-    private readonly HaftcinChallengeDbContext _dbContext;
+    private readonly string _databaseName = Guid.NewGuid().ToString();
 
     public AuthControllerTests(WebApplicationFactory<Program> factory)
     {
@@ -33,21 +33,14 @@ public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>
 
                 services.AddDbContext<HaftcinChallengeDbContext>(options =>
                 {
-                    options.UseInMemoryDatabase("TestDb");
+                    options.UseInMemoryDatabase(_databaseName);
                 });
             });
         });
-
-        _dbContext = _factory.Services.CreateScope().ServiceProvider.GetRequiredService<HaftcinChallengeDbContext>();
-    }
-
-    public void Dispose()
-    {
-        _dbContext.Database.EnsureDeleted();
     }
 
     [Theory]
-    [InlineData("09123456789")] // Valid Iranian mobile number
+    [InlineData("09123456799")] // Valid Iranian mobile number
     public async Task Register_WithValidMobileNumber_ShouldReturnOk(string mobileNumber)
     {
         // Arrange
@@ -83,12 +76,12 @@ public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Theory]
-    [InlineData("09123456789")] // Valid Iranian mobile number
+    [InlineData("09123456799")] // Valid Iranian mobile number
     public async Task Login_WithValidMobileNumber_ShouldReturnOk(string mobileNumber)
     {
         // Arrange
         var client = _factory.CreateClient();
-        await RegisterUserAsync(client, mobileNumber);
+        var result = await RegisterUserAsync(client, mobileNumber);
         var request = new LoginRequest(mobileNumber);
 
         // Act
@@ -143,7 +136,7 @@ public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>
     {
         // Arrange
         var client = _factory.CreateClient();
-        var mobileNumber = "09123456789";
+        var mobileNumber = "09123456799";
         var (userId, _) = await RegisterUserAsync(client, mobileNumber);
         await LoginUserAsync(client, mobileNumber);
         var request = new VerifyOtpRequest("invalid_otp");
@@ -171,5 +164,15 @@ public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>
         loginResponse.EnsureSuccessStatusCode();
         var content = await loginResponse.Content.ReadFromJsonAsync<LoginResponse>();
         return content!.Otp;
+    }
+
+    public void Dispose()
+    {
+        _factory.Dispose();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await _factory.DisposeAsync();
     }
 }
