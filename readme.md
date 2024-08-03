@@ -173,11 +173,9 @@ To run unit tests, specifying the tests/HaftcinChallenge.Domain.Tests directory 
  dotnet test tests/HaftcinChallenge.Domain.Tests/HaftcinChallenge.Domain.Tests.csproj
 ```
 
-Certainly. I'll add a note about the potential brittleness of the tests. Here's an updated version of the section:
-
 ### 9. Run Integration Tests
 
-To run integration tests, navigate to the `tests/HaftcinChallenge.IntegrationTests` directory and execute the following command:
+To run integration tests, specifying the `tests/HaftcinChallenge.IntegrationTests` directory and execute the following command:
 
 ```bash
 dotnet test tests/HaftcinChallenge.IntegrationTests/HaftcinChallenge.IntegrationTests.csproj
