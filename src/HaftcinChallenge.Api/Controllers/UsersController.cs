@@ -56,8 +56,9 @@ public class UsersController : ApiController
     }
     
     [HttpGet]
-    public async Task<IActionResult> ListUsers([FromQuery] string? searchTerm = "", [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+    public async Task<IActionResult> ListUsers([FromQuery] ListUsersRequest request)
     {
+        var (searchTerm, page, pageSize) = request;
         _logger.LogInformation("Listing users with searchTerm: {SearchTerm}, page: {Page}, pageSize: {PageSize}", searchTerm, page, pageSize);
         
         var query = new ListUsersQuery(searchTerm, page, pageSize);
@@ -67,8 +68,9 @@ public class UsersController : ApiController
             usersResult =>
             {
                 var mapperUsersResult = MapUserToUserDto(usersResult.Users);
-                _logger.LogInformation("Successfully retrieved {UserCount} users", mapperUsersResult.Count());
-                return Ok(new ListUsersResponse(mapperUsersResult, usersResult.TotalCount, usersResult.Page, usersResult.PageSize));
+                var userDtos = mapperUsersResult as UserDto[] ?? mapperUsersResult.ToArray();
+                _logger.LogInformation("Successfully retrieved {UserCount} users", userDtos.Count());
+                return Ok(new ListUsersResponse(userDtos, usersResult.TotalCount, usersResult.Page, usersResult.PageSize));
             },
             errors => {
                 _logger.LogError("Failed to list users. Errors: {@Errors}", errors);
@@ -79,9 +81,9 @@ public class UsersController : ApiController
     private IEnumerable<UserDto> MapUserToUserDto(IEnumerable<User> users)
     {
         var userDtos = users.Select(u => new UserDto(
-            u.FirstName,
-            u.LastName,
-            u.Email,
+            u.FirstName!,
+            u.LastName!,
+            u.Email!,
             u.MobileNumber,
             u.DateOfBirth)
         );

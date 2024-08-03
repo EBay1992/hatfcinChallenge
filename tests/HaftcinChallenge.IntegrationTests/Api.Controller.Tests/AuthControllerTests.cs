@@ -40,7 +40,7 @@ public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Theory]
-    [InlineData("09123456799")] // Valid Iranian mobile number
+    [InlineData("09123456799")] // Valid mobile number
     public async Task Register_WithValidMobileNumber_ShouldReturnOk(string mobileNumber)
     {
         // Arrange
@@ -59,7 +59,7 @@ public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Theory]
-    [InlineData("1234567890")] // Invalid Iranian mobile number
+    [InlineData("1234567890")] // Invalid mobile number
     [InlineData("")] // Empty string
     [InlineData("abc123")] // Non-numeric string
     public async Task Register_WithInvalidMobileNumber_ShouldReturnBadRequest(string mobileNumber)
@@ -76,7 +76,7 @@ public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Theory]
-    [InlineData("09123456799")] // Valid Iranian mobile number
+    [InlineData("09123456799")] // Valid mobile number
     public async Task Login_WithValidMobileNumber_ShouldReturnOk(string mobileNumber)
     {
         // Arrange
@@ -95,7 +95,7 @@ public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Theory]
-    [InlineData("1234567890")] // Invalid Iranian mobile number
+    [InlineData("1234567890")] // Invalid mobile number
     [InlineData("")] // Empty string
     [InlineData("abc123")] // Non-numeric string
     public async Task Login_WithInvalidMobileNumber_ShouldReturnBadRequest(string mobileNumber)

@@ -40,7 +40,7 @@ namespace HaftcinChallenge.Domain.Tests
             var now = DateTime.UtcNow;
             dateTimeProvider.UtcNow.Returns(now);
 
-            var user = new User("1234567890");
+            var user = new User("091209121213");
             user.SetOtp("123456", dateTimeProvider);
 
             // Act
@@ -59,7 +59,7 @@ namespace HaftcinChallenge.Domain.Tests
             var now = DateTime.UtcNow;
             dateTimeProvider.UtcNow.Returns(now);
 
-            var user = new User("1234567890");
+            var user = new User("091209121213");
             user.SetOtp("123456", dateTimeProvider);
 
             // Act
@@ -74,7 +74,7 @@ namespace HaftcinChallenge.Domain.Tests
         public void VerifyUser_WhenCalled_ShouldSetIsVerifiedToTrueAndClearOtp()
         {
             // Arrange
-            var user = new User("1234567890");
+            var user = new User("091209121213");
             user.SetOtp("123456", Substitute.For<IDateTimeProvider>());
 
             // Act
@@ -90,7 +90,7 @@ namespace HaftcinChallenge.Domain.Tests
         public void UpdateProfile_WhenCalled_ShouldUpdateProfileInformation()
         {
             // Arrange
-            var user = new User("1234567890");
+            var user = new User("091209121213");
 
             // Act
             user.UpdateProfile(
@@ -115,7 +115,7 @@ namespace HaftcinChallenge.Domain.Tests
             string firstName, string lastName, string email, string expectedParamName)
         {
             // Arrange
-            var user = new User("1234567890");
+            var user = new User("091209121213");
             var dateOfBirth = new DateTime(1990, 1, 1);
 
             // Act
