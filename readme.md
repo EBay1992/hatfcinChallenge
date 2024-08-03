@@ -95,7 +95,7 @@ git clone https://github.com/EBay1992/hatfcinChallenge.git
 Change into the project directory:
 
 ```bash
-cd HaftcinChallenge
+cd hatfcinChallenge
 ```
 
 ### 3. Adjust Database Connection
@@ -122,13 +122,29 @@ To build the project, navigate to the `src` directory and run the following comm
  dotnet build src/HaftcinChallenge.Api/HaftcinChallenge.Api.csproj
 ```
 
+Certainly! I'll add a note about updating the global EF tool before running migrations. Here's the updated section:
+
 ### 5. Run Migrations
 
-Before running the application, you may need to apply any pending migrations to set up the database schema. Run the following command:
+Before running the application, you need to apply any pending migrations to set up the database schema. However, first ensure that you have the latest version of the Entity Framework Core tools installed globally. You can update the tools using the following command:
+
+```bash
+dotnet tool update --global dotnet-ef
+```
+
+If you haven't installed the EF Core tools globally before, you can install them using:
+
+```bash
+dotnet tool install --global dotnet-ef
+```
+
+Once you have the latest EF Core tools, you can apply the migrations using the following command:
 
 ```bash
 dotnet ef database update -p src/HaftcinChallenge.Infrastructure/HaftcinChallenge.Infrastructure.csproj -s src/HaftcinChallenge.Api/HaftcinChallenge.Api.csproj
 ```
+
+This command will apply all pending migrations to your database, creating or updating the necessary tables and schema.
 
 ### 6. Start the Application
 
@@ -143,13 +159,27 @@ dotnet run --project src/HaftcinChallenge.Api/HaftcinChallenge.Api.csproj
 Once the application is running, you can access the API at `http://localhost:5015/swagger/index.html`.
 
 ### 8. Run Unit Tests
-   To run unit tests, navigate to the tests/HaftcinChallenge.Domain.Tests directory and execute the following command:
+   To run unit tests, specifying the tests/HaftcinChallenge.Domain.Tests directory and execute the following command:
 ```bash
  dotnet test tests/HaftcinChallenge.Domain.Tests/HaftcinChallenge.Domain.Tests.csproj
 ```
 
+Certainly. I'll add a note about the potential brittleness of the tests. Here's an updated version of the section:
+
 ### 9. Run Integration Tests
-   To run integration tests, navigate to the tests/HaftcinChallenge.IntegrationTests directory and execute the following command:
-   ```bash
-  dotnet test tests/HaftcinChallenge.IntegrationTests/HaftcinChallenge.IntegrationTests.csproj
+
+To run integration tests, navigate to the `tests/HaftcinChallenge.IntegrationTests` directory and execute the following command:
+
+```bash
+dotnet test tests/HaftcinChallenge.IntegrationTests/HaftcinChallenge.IntegrationTests.csproj
 ```
+
+**Important Note:** 
+The current integration tests have some inherent brittleness and may not run successfully 100% of the time. This is a known issue that should be addressed in future improvements. Some potential reasons for this instability could include:
+
+1. Timing issues with asynchronous operations
+2. Potential race conditions in test setup or teardown
+3. Dependency on external services or databases that may have occasional hiccups
+4. Insufficient isolation between test cases
+
+When running these tests, you may occasionally encounter failures that are not indicative of actual problems in the code, but rather issues with the test environment or setup. If you encounter consistent failures, it's worth investigating further, but occasional failures may be due to the current brittleness of the test suite.
