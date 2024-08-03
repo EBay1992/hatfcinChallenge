@@ -87,7 +87,7 @@ Follow these steps to get started with the Haftcin Challenge project:
 First, clone the repository to your local machine using Git. Open your terminal and run:
 
 ```bash
-git clone https://github.com/yourusername/HaftcinChallenge.git
+git clone https://github.com/EBay1992/hatfcinChallenge.git
 ```
 
 ### 2. Navigate to the Project Directory
