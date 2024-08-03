@@ -119,7 +119,7 @@ Replace:
 To build the project, navigate to the `src` directory and run the following command:
 
 ```bash
-dotnet build --project src/HaftcinChallenge.Api
+ dotnet build src/HaftcinChallenge.Api/HaftcinChallenge.Api.csproj
 ```
 
 ### 5. Run Migrations
@@ -132,10 +132,10 @@ dotnet ef database update -p src/HaftcinChallenge.Infrastructure/HaftcinChalleng
 
 ### 6. Start the Application
 
-You can now start the application by navigating back to the `src/HaftcinChallenge.Api` directory and running:
+You can now start the application by specifying the startup project `src/HaftcinChallenge.Api` directory and running:
 
 ```bash
-dotnet run
+dotnet run --project src/HaftcinChallenge.Api/HaftcinChallenge.Api.csproj
 ```
 
 ### 7. Access the API
@@ -145,13 +145,11 @@ Once the application is running, you can access the API at `http://localhost:501
 ### 8. Run Unit Tests
    To run unit tests, navigate to the tests/HaftcinChallenge.Domain.Tests directory and execute the following command:
 ```bash
-   cd tests/HaftcinChallenge.Domain.Tests
-   dotnet test
+ dotnet test tests/HaftcinChallenge.Domain.Tests/HaftcinChallenge.Domain.Tests.csproj
 ```
 
 ### 9. Run Integration Tests
    To run integration tests, navigate to the tests/HaftcinChallenge.IntegrationTests directory and execute the following command:
    ```bash
-   cd tests/HaftcinChallenge.IntegrationTests
-   dotnet test
+  dotnet test tests/HaftcinChallenge.IntegrationTests/HaftcinChallenge.IntegrationTests.csproj
 ```
