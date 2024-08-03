@@ -159,7 +159,7 @@ dotnet run --project src/HaftcinChallenge.Api/HaftcinChallenge.Api.csproj
 Once the application is running, you can access the API at `http://localhost:5015/swagger/index.html`.
 
 ### 8. Run Unit Tests
-   To run unit tests, specifying the tests/HaftcinChallenge.Domain.Tests directory and execute the following command:
+To run unit tests, specifying the tests/HaftcinChallenge.Domain.Tests directory and execute the following command:
 ```bash
  dotnet test tests/HaftcinChallenge.Domain.Tests/HaftcinChallenge.Domain.Tests.csproj
 ```
@@ -174,7 +174,7 @@ To run integration tests, navigate to the `tests/HaftcinChallenge.IntegrationTes
 dotnet test tests/HaftcinChallenge.IntegrationTests/HaftcinChallenge.IntegrationTests.csproj
 ```
 
-**Important Note:** 
+**Important Note:**
 The current integration tests have some inherent brittleness and may not run successfully 100% of the time. This is a known issue that should be addressed in future improvements. Some potential reasons for this instability could include:
 
 1. Timing issues with asynchronous operations

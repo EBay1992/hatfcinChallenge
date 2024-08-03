@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # Wait for the database to be ready
-echo "Waiting for database..."
-sleep 10
+echo "Waiting for SQL Server to be available..."
+while ! nc -z db 1433; do
+  sleep 1
+done
+echo "SQL Server is up - executing command"
 
 # Run migrations
-echo "Running migrations..."
-dotnet ef database update --project src/HaftcinChallenge.Infrastructure --startup-project src/HaftcinChallenge.Api
+dotnet ef database update --project HaftcinChallenge.Infrastructure/HaftcinChallenge.Infrastructure.csproj
 
 # Start the application
-echo "Starting the application..."
-dotnet HaftcinChallenge.Api.dll
+exec dotnet HaftcinChallenge.Api.dll
